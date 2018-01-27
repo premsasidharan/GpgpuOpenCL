@@ -1,4 +1,4 @@
-# OpenCL GPGPU Training Examples
+# GPGPU with OpenCL - Training Workshop Examples
 # 
 # 
 ## Open GpgpuOpenCL/vs2015/GpgpuOpencl.sln
