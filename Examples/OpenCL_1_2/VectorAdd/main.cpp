@@ -94,15 +94,15 @@ void vectorAdd()
 
 int main(void)
 {
-	try
-	{
+    try
+    {
         vectorAdd();
-	}
+    }
 
-	catch (cl::Error error)
-	{
-		std::cerr << "Error: " << error.what() << "(" << error.err() << ")" << std::endl;
-	}
+    catch (cl::Error error)
+    {
+        std::cerr << "Error: " << error.what() << "(" << error.err() << ")" << std::endl;
+    }
 
-	return 0;
+    return 0;
 }
