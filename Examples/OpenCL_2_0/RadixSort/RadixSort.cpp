@@ -2,9 +2,7 @@
 
 #include <sstream>
 
-#define OCL_PROGRAM_SOURCE(s) #s
-
-const std::string RadixSort::sSource = OCL_PROGRAM_SOURCE(
+const std::string RadixSort::sSource = R"(
 
 kernel void block_even_odd_count(global const int* p_data, const int mask, global int* p_block_even, global int* p_block_odd)
 {
@@ -157,7 +155,7 @@ kernel void radix_sort(global int* p_in_data, global int* p_temp_data, int count
     release_event(event[3]);
 }
 
-);
+)";
 
 RadixSort::RadixSort(const cl::Context& ctxt)
     :mProgram(ctxt, sSource),

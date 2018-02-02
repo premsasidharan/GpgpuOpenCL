@@ -4,8 +4,6 @@
 #include <GL/GL.h>
 #include <string>
 
-#define SHADER_SOURCE_CODE(s) #s
-
 namespace Ogl
 {
 

@@ -3,26 +3,24 @@
 
 #include "OclUtils.h"
 
-#define OCL_PROGRAM_SOURCE(s) #s
-
 //Histogram kernel source
 //atomic operation on global memory is very slow. Optimize Histogram operation using shared memory
-const std::string sSource = OCL_PROGRAM_SOURCE(
+const std::string sSource = R"(
 
 kernel void init(global int* pHistData)
 {
     pHistData[get_global_id(0)] = 0;
 }
 
-kernel void histogram(read_only image2d_t inpImg, global int* pHistData)
+/*kernel void histogram(read_only image2d_t inpImg, global int* pHistData)
 {
     const int x = get_global_id(0);
     const int y = get_global_id(1);
     int idata = (int)ceil(255.0f*read_imagef(inpImg, (int2)(x, y)).x);
     atomic_inc(&pHistData[idata]);
-}
+}*/
 
-/*kernel void histogram(read_only image2d_t inpImg, global int* pHistData)
+kernel void histogram(read_only image2d_t inpImg, global int* pHistData)
 {
     local int shHistData[256];
     const int x = get_global_id(0);
@@ -37,9 +35,9 @@ kernel void histogram(read_only image2d_t inpImg, global int* pHistData)
     barrier(CLK_LOCAL_MEM_FENCE);
 
     if (index < 256) atomic_add(&pHistData[index], shHistData[index]);
-}*/
+}
 
-);
+)";
 
 OglView::OglView(GLsizei w, GLsizei h, cl::Context& ctxt, cl::CommandQueue& queue)
     :mCtxtCL(ctxt),

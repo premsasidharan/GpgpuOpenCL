@@ -2,8 +2,8 @@
 
 using namespace Ogl;
 
-const std::string RgbaGrayShader::vsCode = SHADER_SOURCE_CODE(
-#version 150\n
+const std::string RgbaGrayShader::vsCode = R"(
+#version 150
 in vec4 inVc;
 in vec2 inTc;
 out vec2 tc;
@@ -12,10 +12,10 @@ void main(void)
 	gl_Position = inVc;
 	tc = inTc;
 }
-);
+)";
 
-const std::string RgbaGrayShader::fsCode = SHADER_SOURCE_CODE(
-#version 150\n
+const std::string RgbaGrayShader::fsCode = R"(
+#version 150
 in vec2 tc;
 out float fragColor;
 uniform sampler2D tex;
@@ -23,7 +23,7 @@ void main(void)
 {
 	fragColor = (texture(tex, tc).r + texture(tex, tc).g + texture(tex, tc).b)/3.0;
 }
-);
+)";
 
 RgbaGrayShader::RgbaGrayShader()
 {

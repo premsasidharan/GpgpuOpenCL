@@ -1,10 +1,8 @@
 #include "OclCompactPrv.h"
 
-#define OCL_PROGRAM_SOURCE(s) #s
-
 using namespace Ocl;
 
-const std::string CompactPrv::sSource = OCL_PROGRAM_SOURCE(
+const std::string CompactPrv::sSource = R"(
 
 typedef struct _OptFlowData
 {
@@ -296,4 +294,4 @@ kernel void add(global const int* pInput, global int* pOutput, const int start, 
     if (id < count) pOutput[id] += shData;
 }
 
-);
+)";

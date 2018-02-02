@@ -2,28 +2,29 @@
 
 using namespace Ogl;
 
-const std::string LumaShader::vsCode =
-	"#version 150\n"
-	"in vec4 inVc;\n"
-	"in vec2 inTc;\n"
-	"out vec2 tc;\n"
-	"void main(void)\n"
-	"{\n"
-	"    gl_Position = inVc;\n"
-	"    tc = inTc;\n"
-	"}\n";
+const std::string LumaShader::vsCode = R"(
+	#version 150
+	in vec4 inVc;
+	in vec2 inTc;
+	out vec2 tc;
+	void main(void)
+	{
+	    gl_Position = inVc;
+	    tc = inTc;
+	}
+)";
 
-const std::string LumaShader::fsCode =
-	"#version 150\n"
-	"in vec2 tc;\n"
-	"out vec4 fragColor;\n"
-	"uniform sampler2D tex;\n"
-	"\n"
-	"void main(void)\n"
-	"{\n"
-	"   float color = texture(tex, tc).r;\n"
-	"	fragColor = vec4(color, color, color, 1.0);\n"
-	"}\n";
+const std::string LumaShader::fsCode = R"(
+	#version 150
+	in vec2 tc;
+	out vec4 fragColor;
+	uniform sampler2D tex;
+	void main(void)
+	{
+	   float color = texture(tex, tc).r;
+		fragColor = vec4(color, color, color, 1.0);
+	}
+)";
 
 LumaShader::LumaShader()
 {

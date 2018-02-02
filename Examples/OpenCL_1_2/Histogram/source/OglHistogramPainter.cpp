@@ -1,15 +1,13 @@
 #include "OglHistogramPainter.h"
 
-#define OCL_PROGRAM_SOURCE(s) #s
-
-const std::string HistogramPainter::sSource = OCL_PROGRAM_SOURCE(
-kernel void histogram_coords(global read_only unsigned int* p_hist_data, unsigned int max_value, global float2* coord)
+const std::string HistogramPainter::sSource = R"(
+kernel void histogram_coords(global const unsigned int* p_hist_data, unsigned int max_value, global float2* coord)
 {
     int i = get_global_id(0);
     coord[i].x = -1.0f + (((float)i)/128.0f);
     coord[i].y = -1.0f + (((float)p_hist_data[i]*2.0f)/(float)max_value);
 };
-);
+)";
 
 HistogramPainter::HistogramPainter(const cl::Context& ctxt)
     :mContext(ctxt),

@@ -85,7 +85,7 @@ BOOL TestApp::InitInstance()
     int ypos = (rect.Height()-height) >> 1;
     m_pMainWnd = new TestView;
     LPCTSTR cs = AfxRegisterWndClass(CS_CLASSDC|CS_DBLCLKS, ::LoadCursor(NULL, IDC_ARROW), 0, 0);
-    m_pMainWnd->CreateEx(0, cs, _T("Template"), WS_OVERLAPPEDWINDOW, xpos, ypos, width, height, 0, 0);
+    m_pMainWnd->CreateEx(0, cs, _T("Gradient"), WS_OVERLAPPEDWINDOW, xpos, ypos, width, height, 0, 0);
     m_pMainWnd->ShowWindow(SW_SHOW);
     m_pMainWnd->UpdateWindow();
 

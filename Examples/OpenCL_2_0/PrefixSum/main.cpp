@@ -3,9 +3,7 @@
 
 #include <CL/cl2.hpp>
 
-#define OCL_PROGRAM_SOURCE(s) #s
-
-const std::string sSource = OCL_PROGRAM_SOURCE(
+const std::string sSource = R"(
 
 kernel void child_scan(global int4* pdata, int count)
 {
@@ -112,7 +110,7 @@ kernel void scan(global int* pdata, global int* tempData, int count)
     release_event(event2);
 }
 
-);
+)";
 
 int main(int argc, char** argv)
 {

@@ -5,8 +5,8 @@ using namespace Ogl;
 #define _USE_MATH_DEFINES
 #include <math.h>
 
-const std::string RgbaShader3D::vsCode = SHADER_SOURCE_CODE(
-#version 150\n
+const std::string RgbaShader3D::vsCode = R"(
+#version 150
 in vec4 inVc;
 in vec2 inTc;
 out vec2 tc;
@@ -18,10 +18,10 @@ void main(void)
 	gl_Position = (mvMatrix*pos);
 	tc = inTc;
 }
-);
+)";
 
-const std::string RgbaShader3D::fsCode = SHADER_SOURCE_CODE(
-#version 150\n
+const std::string RgbaShader3D::fsCode = R"(
+#version 150
 in vec2 tc;
 out vec4 fragColor;
 uniform sampler2D tex;
@@ -29,7 +29,7 @@ void main(void)
 {
 	fragColor = texture(tex, tc).rgba;
 }
-);
+)";
 
 RgbaShader3D::RgbaShader3D()
     :mSx(1.0),

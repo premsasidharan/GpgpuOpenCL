@@ -1,10 +1,8 @@
 #include "OglView.h"
 
-#define OCL_PROGRAM_SOURCE(s) #s
-
 using namespace Ocl;
 
-const std::string OglView::sSource = OCL_PROGRAM_SOURCE(
+const std::string OglView::sSource = R"(
 
 kernel void gradient(read_only image2d_t inpImg, write_only image2d_t outImg)
 {
@@ -183,4 +181,4 @@ kernel void extractCoords(global int2 *p_pos_corner, int count, global float2* c
     crossCoords(4 * i, pos, width, height, coord);
 }
 
-);
+)";

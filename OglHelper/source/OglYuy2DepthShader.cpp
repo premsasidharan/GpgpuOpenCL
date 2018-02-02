@@ -2,8 +2,8 @@
 
 using namespace Ogl;
 
-const std::string Yuy2DepthShader::vsCode = SHADER_SOURCE_CODE(
-#version 150\n
+const std::string Yuy2DepthShader::vsCode = R"(
+#version 150
 in vec4 inVc;
 in vec2 inTc;
 out vec2 tc;
@@ -14,7 +14,7 @@ void main(void)
 }
 );
 
-const std::string Yuy2DepthShader::fsCode = SHADER_SOURCE_CODE(
+const std::string Yuy2DepthShader::fsCode = fsCode"(
 #version 150\n
 in vec2 tc;
 out vec4 fragColor;
@@ -40,7 +40,7 @@ void main(void)
     }
 	fragColor = vec4(color, 1.0);
 }
-);
+)";
 
 Yuy2DepthShader::Yuy2DepthShader()
 {

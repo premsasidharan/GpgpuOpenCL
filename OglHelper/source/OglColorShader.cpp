@@ -2,24 +2,24 @@
 
 using namespace Ogl;
 
-const std::string  ColorShader::vsCode = SHADER_SOURCE_CODE(
-#version 150\n
+const std::string  ColorShader::vsCode = R"(
+#version 150
 in vec4 inVc;
 void main(void)
 {
 	gl_Position = inVc;
 }
-);
+)";
 
-const std::string ColorShader::fsCode = SHADER_SOURCE_CODE(
-#version 150\n
+const std::string ColorShader::fsCode = R"(
+#version 150
 out vec4 fragColor;
 uniform vec4 color;
 void main(void)
 {
 	fragColor = color;
 }
-);
+)";
 
 ColorShader::ColorShader()
 	:mRed(1.0),

@@ -4,9 +4,7 @@
 #include <CL/cl.hpp>
 #include <opencv2/core.hpp>
 
-#define OCL_PROGRAM_SOURCE(s) #s
-
-const std::string sSource = OCL_PROGRAM_SOURCE(
+const std::string sSource = R"(
 
 kernel void multiply(global float* pC, global const float* pA, global const float* pB, int M, int N, int P)
 {
@@ -34,7 +32,7 @@ kernel void multiply(global float* pC, global const float* pA, global const floa
     pC[(P*m)+p] = result;
 }
 
-);
+)";
 
 void fill_random_data(float* p_data, size_t size)
 {

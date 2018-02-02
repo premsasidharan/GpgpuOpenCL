@@ -1,8 +1,6 @@
 #include "OglView.h"
 
-#define OCL_PROGRAM_SOURCE(s) #s
-
-const std::string OglView::sSource = OCL_PROGRAM_SOURCE(
+const std::string OglView::sSource = R"(
 
 kernel void gradient(read_only image2d_t inpImg, write_only image2d_t outImg)
 {
@@ -145,4 +143,4 @@ kernel void binary_threshold(read_only image2d_t inpImg, write_only image2d_t ou
     write_imagef(outImg, (int2)(x, y), idata);
 }
 
-);
+)";

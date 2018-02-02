@@ -2,9 +2,7 @@
 #include <sstream>
 #include <CL/cl.hpp>
 
-#define OCL_PROGRAM_SOURCE(s) #s
-
-const std::string sSource = OCL_PROGRAM_SOURCE(
+const std::string sSource = R"(
 
 inline void breduce(local volatile int* shData)
 {
@@ -32,7 +30,7 @@ kernel void reduceSum(global const int* pInput, global int* pOutput, const int c
     if (get_local_id(0) == 0) pOutput[get_group_id(0)] = shData[0];
 }
 
-);
+)";
 
 void reduceSumMain()
 {

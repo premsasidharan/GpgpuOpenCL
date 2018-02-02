@@ -1,8 +1,6 @@
 #include "OglView.h"
 
-#define OCL_PROGRAM_SOURCE(s) #s
-
-const std::string OglView::sSource = OCL_PROGRAM_SOURCE(
+const std::string OglView::sSource = R"(
 
 typedef struct _CornerParam
 {
@@ -281,4 +279,4 @@ kernel void compact(read_only image2d_t inpImg, global int2* pCorners, global in
     release_event(event[0]);
 }
 
-);
+)";

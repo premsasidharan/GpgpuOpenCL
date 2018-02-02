@@ -1,9 +1,8 @@
 #include "OglView.h"
 #include "OglImageFormat.h"
 
-#define OCL_PROGRAM_SOURCE(s) #s
 
-const std::string sSource = OCL_PROGRAM_SOURCE(
+const std::string sSource = R"(
 
 kernel void invert_color(read_only image2d_t inpImg, write_only image2d_t outImg)
 {
@@ -13,7 +12,7 @@ kernel void invert_color(read_only image2d_t inpImg, write_only image2d_t outImg
     write_imagef(outImg, coord, odata);
 }
 
-);
+)";
 
 OglView::OglView(GLsizei w, GLsizei h, cl::Context& ctxt, cl::CommandQueue& queue)
     :mCtxtCL(ctxt),

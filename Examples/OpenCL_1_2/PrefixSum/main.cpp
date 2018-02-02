@@ -2,9 +2,7 @@
 #include <sstream>
 #include <CL/cl.hpp>
 
-#define OCL_PROGRAM_SOURCE(s) #s
-
-const std::string sSource = OCL_PROGRAM_SOURCE(
+const std::string sSource = R"(
 
 inline void wscan(int i, local volatile int* sh_data)
 {
@@ -63,7 +61,7 @@ kernel void add(global const int* pInput, global int* pOutput, const int start, 
     if (id < count) pOutput[id] += shData;
 }
 
-);
+)";
 
 void prefixSumMain()
 {

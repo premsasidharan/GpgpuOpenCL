@@ -5,8 +5,8 @@ using namespace Ogl;
 #define _USE_MATH_DEFINES
 #include <math.h>
 
-const std::string Yuv420Shader3D::vsCode = SHADER_SOURCE_CODE(
-#version 150\n
+const std::string Yuv420Shader3D::vsCode = R"(
+#version 150
 in vec4 inVc;
 in vec2 inTc;
 //out vec2 tc;
@@ -20,10 +20,10 @@ void main(void)
     //tc = inTc;
     vc = inVc;
 }
-);
+)";
 
-const std::string Yuv420Shader3D::fsCode = SHADER_SOURCE_CODE(
-#version 150\n
+const std::string Yuv420Shader3D::fsCode = R"(
+#version 150
 //in vec2 tc;
 in vec4 vc;
 out vec4 fragColor;
@@ -51,7 +51,7 @@ void main(void)
     float v = texture(tex_v, tc).r-0.5;
     fragColor = vec4(y+1.5958*v, y-0.39173*u-0.81290*v, y+2.017*u, 1.0);*/
 }
-);
+)";
 
 Yuv420Shader3D::Yuv420Shader3D()
 {

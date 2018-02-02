@@ -7,9 +7,7 @@
 template<class T>
 using svm_vector = std::vector<T, cl::SVMAllocator<T, cl::SVMTraitFine<>>>;
 
-#define OCL_PROGRAM_SOURCE(s) #s
-
-const std::string sSource = OCL_PROGRAM_SOURCE(
+const std::string sSource = R"(
 
 kernel void multiply(global float* pC, global const float* pA, global const float* pB, int M, int N, int P)
 {
@@ -37,7 +35,7 @@ kernel void multiply(global float* pC, global const float* pA, global const floa
     pC[(P*m)+p] = result;
 }
 
-);
+)";
 
 void fill_random_data(svm_vector<cl_float>& data)
 {

@@ -2,8 +2,8 @@
 
 using namespace Ogl;
 
-const std::string Yuy2Shader::vsCode = SHADER_SOURCE_CODE(
-#version 150\n
+const std::string Yuy2Shader::vsCode = R"(
+#version 150
 in vec4 inVc;
 in vec2 inTc;
 out vec2 tc;
@@ -12,10 +12,10 @@ void main(void)
 	gl_Position = inVc;
 	tc = inTc;
 }
-);
+)";
 
-const std::string Yuy2Shader::fsCode = SHADER_SOURCE_CODE(
-#version 150\n
+const std::string Yuy2Shader::fsCode = R"(
+#version 150
 in vec2 tc;
 out vec4 fragColor;
 uniform sampler2D tex_y;
@@ -31,7 +31,7 @@ void main(void)
 	vec3 color = bt709*yuv;
 	fragColor = vec4(color.rgb, 1.0);
 }
-);
+)";
 
 Yuy2Shader::Yuy2Shader()
 {

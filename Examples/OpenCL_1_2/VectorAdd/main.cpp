@@ -1,12 +1,13 @@
 #include <iostream>
 #include <CL/cl.hpp>
 
-const std::string sSource =
-"kernel void add(global const int* pA, global const int* pB, global int* pC)"
-"{"
-"    const int id = get_global_id(0);"
-"    pC[id] = (pA[id] + pB[id]);"
-"}";
+const std::string sSource = R"(
+kernel void add(global const int* pA, global const int* pB, global int* pC)
+{
+    const int id = get_global_id(0);
+    pC[id] = (pA[id] + pB[id]);
+}
+)";
 
 void vectorAdd()
 {

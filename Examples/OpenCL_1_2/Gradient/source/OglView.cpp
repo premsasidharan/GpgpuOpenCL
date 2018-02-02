@@ -3,9 +3,7 @@
 
 #include "OclUtils.h"
 
-#define OCL_PROGRAM_SOURCE(s) #s
-
-const std::string sSource = OCL_PROGRAM_SOURCE(
+const std::string sSource = R"(
 kernel void gradient(read_only image2d_t inpImg, write_only image2d_t outImg, global const float* pIx, global const float* pIy)
 {
     const int x = get_global_id(0);
@@ -28,7 +26,7 @@ kernel void gradient(read_only image2d_t inpImg, write_only image2d_t outImg, gl
     float odata = sqrt((ix*ix)+(iy*iy));
     write_imagef(outImg, (int2)(x, y), odata);
 }
-);
+)";
 
 const GLfloat maskIx[] =
     {
