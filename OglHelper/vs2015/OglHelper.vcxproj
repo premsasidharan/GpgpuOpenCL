@@ -89,18 +89,13 @@
     <ClInclude Include="..\include\OglProgram.h" />
     <ClInclude Include="..\include\OglRgbaGrayShader.h" />
     <ClInclude Include="..\include\OglRgbaShader.h" />
-    <ClInclude Include="..\include\OglRgbaShader3D.h" />
     <ClInclude Include="..\include\OglShape.h" />
-    <ClInclude Include="..\include\OglSphere.h" />
     <ClInclude Include="..\include\OglTexture.h" />
     <ClInclude Include="..\include\OglImage.h" />
     <ClInclude Include="..\include\IOglImage.h" />
     <ClInclude Include="..\include\IOglShader.h" />
     <ClInclude Include="..\include\IOglGeometry.h" />
-    <ClInclude Include="..\include\OglVideoCube.h" />
     <ClInclude Include="..\include\OglYuv420Shader.h" />
-    <ClInclude Include="..\include\OglYuv420Shader3D.h" />
-    <ClInclude Include="..\include\OglYuy2DepthShader.h" />
     <ClInclude Include="..\include\OglYuy2Shader.h" />
     <ClInclude Include="..\source\OglImageConverter.h" />
   </ItemGroup>
@@ -117,15 +112,11 @@
     <ClCompile Include="..\source\OglProgram.cpp" />
     <ClCompile Include="..\source\OglRgbaGrayShader.cpp" />
     <ClCompile Include="..\source\OglRgbaShader.cpp" />
-    <ClCompile Include="..\source\OglRgbaShader3D.cpp" />
     <ClCompile Include="..\source\OglShape.cpp" />
     <ClCompile Include="..\source\OglSphere.cpp" />
     <ClCompile Include="..\source\OglTexture.cpp" />
     <ClCompile Include="..\source\IOglShader.cpp" />
-    <ClCompile Include="..\source\OglVideoCube.cpp" />
     <ClCompile Include="..\source\OglYuv420Shader.cpp" />
-    <ClCompile Include="..\source\OglYuv420Shader3D.cpp" />
-    <ClCompile Include="..\source\OglYuy2DepthShader.cpp" />
     <ClCompile Include="..\source\OglYuy2Shader.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -72,18 +72,6 @@
     <ClInclude Include="..\include\OglYuv420Shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\OglRgbaShader3D.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\OglVideoCube.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\OglYuv420Shader3D.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\OglSphere.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\source\OglImageConverter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -91,9 +79,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\include\OglYuy2Shader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\OglYuy2DepthShader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -143,25 +128,13 @@
     <ClCompile Include="..\source\OglYuv420Shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\OglRgbaShader3D.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\OglVideoCube.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\source\OglSphere.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\OglYuv420Shader3D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\source\OglBuffer2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\source\OglYuy2Shader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\OglYuy2DepthShader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
