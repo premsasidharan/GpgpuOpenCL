@@ -1,5 +1,5 @@
 # GPGPU with OpenCL
-    One day training(6 hr) workshop to introduce the the basics of GPGPU. Covers GPGPU basic concepts through 12 programming examples.
+    *One day training(6 hr) workshop to introduce the the basics of GPGPU. Covers GPGPU basic concepts through 12 programming examples.
 
 ## Agenda
     - OpenCL Programming Model, Basics
