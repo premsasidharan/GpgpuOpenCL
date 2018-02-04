@@ -26,8 +26,9 @@
 
     - Exercise: RGB Histogram
 
-### [Presentation Slides](https://github.com/premsasidharan/GpgpuOpenCL/blob/master/docs/heterogeneous%20computing.pdf)
-### Visual Studio Workspace - GpgpuOpenCL/vs2015/GpgpuOpencl.sln
+## Using the Training Material
+*[Presentation Slides](https://github.com/premsasidharan/GpgpuOpenCL/blob/master/docs/heterogeneous%20computing.pdf)
+*Open Visual Studio Workspace - GpgpuOpenCL/vs2015/GpgpuOpencl.sln
 
 ## Software and hardware requirements
     - Visual Studio 2015
