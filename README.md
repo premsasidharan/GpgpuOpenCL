@@ -1,4 +1,5 @@
-# GPGPU with OpenCL - Training Workshop Examples and other material
+#GPGPU with OpenCL
+*One day training (6hrs) workshop to introduce the the basics of GPGPU. This training covers GPGPU programming concepts through 12 programming examples.
 
 
 ## Open GpgpuOpenCL/vs2015/GpgpuOpencl.sln
