@@ -12,6 +12,7 @@
     
     - Parallel Processing Patterns
         - Map
+        - Stencil
         - Scatter
         - Gather
         - Reduction (Example 6: Reduce Sum)
