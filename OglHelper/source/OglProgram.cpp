@@ -1,4 +1,3 @@
-#include <afxwin.h>
 #include "OglProgram.h"
 
 using namespace Ogl;
@@ -57,11 +56,11 @@ void Program::compileShader(GLuint shader)
     glGetShaderiv(shader, GL_COMPILE_STATUS, &status);
     if (status != GL_TRUE)
     {
-        GLint size = 0;
-        GLchar shader_status[1000];
-        glGetShaderInfoLog(shader, 1000, &size, shader_status);
-        AfxMessageBox(CString("Shader Failed ") + shader_status);
-        exit(-1);
+        GLint logLen;
+        glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &logLen);
+        std::string strErr(logLen, 0);
+        glGetShaderInfoLog(shader, logLen, nullptr, (GLchar*)strErr.data());
+        throw std::runtime_error(std::string("Shader Error:\n\n") + strErr);
     }
 }
 

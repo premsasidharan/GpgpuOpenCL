@@ -55,7 +55,7 @@ void OglView::init()
         mCompactKernel = cl::Kernel(mProgram, "compact");
     }
 
-    catch (cl::Error err)
+    catch (const cl::Error& err)
     {
         printf("\nFailed: %s", err.what());
         exit(0);

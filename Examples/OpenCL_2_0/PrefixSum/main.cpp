@@ -176,7 +176,7 @@ int main(int argc, char** argv)
         printf("\nPrfix sum %s", (flag ? "success" : "failed"));
     }
 
-    catch (cl::Error error)
+    catch (const cl::Error& error)
     {
         std::cerr << "Error: " << error.what() << "(" << error.err() << ")" << std::endl;
     }

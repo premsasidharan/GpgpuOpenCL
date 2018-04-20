@@ -58,9 +58,9 @@ void TestView::OnPaint()
         mViewGL->draw(mFrame.data);
     }
 
-    catch (cl::Error error)
+    catch (const std::exception& error)
     {
-        MessageBox(_T("Error"), CString("OpenCL Error :" + CStringA(error.what())));
+        MessageBox(_T("Error"), CString("Error :" + CStringA(error.what())));
         exit(0);
     }
     // Do not call CWnd::OnPaint() for painting messages
@@ -84,12 +84,21 @@ void TestView::createOpenGLContext()
     mCtxtGL.reset(new Ogl::WinGlContext(this));
 }
 
-void TestView::initGL()
+int TestView::initGL()
 {
     createOpenGLContext();
     Ogl::UseWinGlContext use(*mCtxtGL);
 
-    glewInit();
+    auto status = glewInit();
+    if (status != GLEW_OK)
+    {
+        MessageBoxW(_T("glewInit Failed"), _T("Error"));
+        return -1;
+    }
+
+    //glEnable(GL_DEBUG_OUTPUT);
+    //glDebugMessageCallback((GLDEBUGPROC)glMessageCallback, this);
+
     std::vector<cl::Platform> platforms;
     cl::Platform::get(&platforms);
     for (size_t i = 0; i < platforms.size(); i++)
@@ -107,7 +116,7 @@ void TestView::initGL()
             break;
         }
 
-        catch (cl::Error error)
+        catch (const cl::Error&)
         {
             std::string name;
             platforms[i].getInfo(CL_PLATFORM_NAME, &name);
@@ -117,19 +126,26 @@ void TestView::initGL()
 
     if (mCtxtCL.get() == 0)
     {
-        AfxMessageBox(_T("No support for OpenCL"));
-        exit(0);
+        MessageBoxW(_T("No support for OpenCL"), _T("Error"));
+        return -1;
     }
 
-    mCamera.open(0);
-    //mCamera.set(cv::CAP_PROP_FRAME_WIDTH, 1920);
-    //mCamera.set(cv::CAP_PROP_FRAME_HEIGHT, 1080);
-    if (!mCamera.isOpened())
+    try
     {
-        exit(0);
+        mCamera.open(0);
+        //mCamera.set(cv::CAP_PROP_FRAME_WIDTH, 1920);
+        //mCamera.set(cv::CAP_PROP_FRAME_HEIGHT, 1080);
+        mCamera.read(mFrame);
+        mViewGL.reset(new OglView(mFrame.cols, mFrame.rows, *mCtxtCL, *mQueueCL));
     }
-    mCamera.read(mFrame);
-    mViewGL.reset(new OglView(mFrame.cols, mFrame.rows, *mCtxtCL, *mQueueCL));
+
+    catch (const std::exception& err)
+    {
+        MessageBoxW(CString(err.what()), _T("Error"));
+        return -1;
+    }
+
+    return 0;
 }
 
 int TestView::OnCreate(LPCREATESTRUCT lpCreateStruct)
@@ -138,7 +154,11 @@ int TestView::OnCreate(LPCREATESTRUCT lpCreateStruct)
         return -1;
 
     // TODO:  Add your specialized creation code here
-    initGL();
+    auto status = initGL();
+    if (status != 0)
+    {
+        return status;
+    }
 
     SetTimer(1, 25, 0);
     return 0;
@@ -190,4 +210,14 @@ void TestView::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
             break;
     }
     CWnd::OnKeyDown(nChar, nRepCnt, nFlags);
+}
+
+void TestView::glMessageCallback(GLenum source, GLenum type, GLuint id,
+    GLenum severity, GLsizei length, const GLchar* message, const void* param)
+{
+    if (type == GL_DEBUG_TYPE_ERROR)
+    {
+        fprintf(stderr, "%s\n", message);
+        throw std::runtime_error(message);
+    }
 }

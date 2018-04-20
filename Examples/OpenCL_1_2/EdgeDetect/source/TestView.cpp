@@ -58,9 +58,9 @@ void TestView::OnPaint()
         mViewGL->draw(mFrame.data);
     }
 
-    catch (cl::Error error)
+    catch (const std::exception& error)
     {
-        MessageBox(_T("Error"), CString("OpenCL Error :"+CStringA(error.what())));
+        MessageBox(_T("Error"), CString("Error :"+CStringA(error.what())));
         exit(0);
     }
     // Do not call CWnd::OnPaint() for painting messages
@@ -107,7 +107,7 @@ void TestView::initGL()
             break;
         }
 
-        catch (cl::Error error)
+        catch (const cl::Error&)
         {
             std::string name;
             platforms[i].getInfo(CL_PLATFORM_NAME, &name);

@@ -74,7 +74,7 @@ int main(int argc, char** argv)
         return radix_sort();
     }
 
-    catch (cl::Error error)
+    catch (const cl::Error& error)
     {
         std::cerr << "Error: " << error.what() << "(" << error.err() << ")" << std::endl;
     }

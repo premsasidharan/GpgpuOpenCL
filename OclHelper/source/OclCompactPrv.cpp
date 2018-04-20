@@ -18,7 +18,7 @@ CompactPrv::CompactPrv(const cl::Context& ctxt)
         init(mWgrpSize);
     }
 
-    catch (cl::Error error)
+    catch (const cl::Error& error)
     {
         fprintf(stderr, "Error: %s", error.what());
         exit(0);

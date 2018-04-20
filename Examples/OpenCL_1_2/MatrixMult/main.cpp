@@ -133,7 +133,7 @@ int main(int argc, char** argv)
         return matrix_mult();
     }
 
-    catch (cl::Error error)
+    catch (const cl::Error& error)
     {
         std::cerr << "Error: " << error.what() << "(" << error.err() << ")" << std::endl;
     }

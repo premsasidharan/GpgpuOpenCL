@@ -37,8 +37,10 @@ protected:
     DECLARE_MESSAGE_MAP()
 
 private:
-    void initGL();
+    int initGL();
     void createOpenGLContext();
+    static void glMessageCallback(GLenum source, GLenum type, GLuint id,
+        GLenum severity, GLsizei length, const GLchar* message, const void* param);
 
 private:
     cv::Mat mFrame;

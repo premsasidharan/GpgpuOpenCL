@@ -170,9 +170,9 @@ int main(void)
         prefixSumMain();
     }
 
-    catch (cl::Error error)
+    catch (const std::exception& error)
     {
-        std::cerr << "Error: " << error.what() << "(" << error.err() << ")" << std::endl;
+        std::cerr << "Error: " << error.what() << std::endl;
     }
 
     return 0;
